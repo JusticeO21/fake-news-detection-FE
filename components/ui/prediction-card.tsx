@@ -97,10 +97,8 @@ function PredictionResults({ predictedOutput, confidence, model, processingTime 
         />
       </div>
       <div className="text-center space-y-2 animate-in slide-in-from-bottom-4 fade-in duration-600 delay-100">
-        <h3 className={`text-2xl font-bold `}>
-          {config.result}
-        </h3>
-        <p className="text-md">{config.message}</p>
+        <h3 className={`text-2xl font-bold `}>{config.result}</h3>
+        <p className="text-sm">{config.message}</p>
       </div>
       <div className="space-y-2 text-xs flex gap-3 md:gap-5 justify-between w-full mt-4">
         {details.map(({ label, value }) => (
