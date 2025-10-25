@@ -24,7 +24,9 @@ export function NewsAnalysis() {
   const [predInfo, setPredInfo] = React.useState<PredInfo | null>(null);
   const [error, setError] = React.useState<string | null>(null);
 
-  const API = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:1000/"
+  const API =
+    process.env.NEXT_PUBLIC_API_URL ??
+    "localhost:8000";
   async function getPrediction(data: { model: string; news: string }) {
     setIsLoading(true);
     setError(null);

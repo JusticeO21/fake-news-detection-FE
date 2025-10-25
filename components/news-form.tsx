@@ -24,17 +24,17 @@ function wordCounter(words:string) {
     .filter((word) => word.length > 0).length;
 }
 
-function getLocalItem(item: string) {
+function getLocalItem(item: string, defaultValue?: string) {
    if (typeof window !== "undefined") {
-     return localStorage.getItem(item) || "";
+     return localStorage.getItem(item) || defaultValue || "";
    }
-   return "";
+   return defaultValue || "";
 }
 
 export function NewsForm({ handleFormSubmit }: NewsFormProps) {
 
   const [news, setNews] = useState(() => getLocalItem("newsFormNews"));
-  const [model, setModel] = useState(() => getLocalItem("newsFormModel"));
+  const [model, setModel] = useState(() => getLocalItem("newsFormModel", "kbap"));
 
   const [hasShownWarning, setHasShownWarning] = useState(false);
 
@@ -99,7 +99,7 @@ export function NewsForm({ handleFormSubmit }: NewsFormProps) {
             <CirclePlus />
           </InputGroupButton>
 
-          <Select value={model} defaultValue="kbap" onValueChange={setModel}>
+          <Select value={model} onValueChange={setModel}>
             <SelectTrigger className="w-[110px] bg-[#252f41] text-[#ff8747]! focus:outline-none hover:cursor-pointer border border-[#979191]">
               <SelectValue placeholder="model" />
             </SelectTrigger>
